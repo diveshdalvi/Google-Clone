@@ -1,43 +1,12 @@
-import React, { useEffect } from 'react'
-import axios from 'axios';
-const SearchResult = ({searchText}) => {
-    const [searchResults, setSearchResults] = useState([]);
-    useEffect(() => {
-        const getData = async() => {
-            const options = {
-                method: 'POST',
-                url: 'https://google-api31.p.rapidapi.com/websearch',
-                headers: {
-                  'content-type': 'application/json',
-                  'X-RapidAPI-Key': '658f5b8a7dmsh8ef18cf53673e22p14bf79jsn91d91ab012df',
-                  'X-RapidAPI-Host': 'google-api31.p.rapidapi.com'
-                },
-                data: {
-                    text: {searchText},
-                    safesearch: 'off',
-                    timelimit: '',
-                    region: 'wt-wt',
-                    max_results: 20
-                  }
-              };
-              
-              try {
-                  const response = await axios.request(options);
-                  console.log(response.data);
-                  setSearchResults(response.data);
-                  
-              } catch (error) {
-                  console.error(error);
-              }
-        }
-        getData()
-    },[searchText])
-    
+import React from 'react'
+
+const SearchResult = () => {
   return (
-    <div>
-        {searchResults.map((result, index) => (
-        <h1 key={index}>{result.title}</h1>
-      ))}
+    <div className=' flex justify-center pt-4 '>
+      <div className=' border-2 border-[#003554] flex flex-col flex-wrap w-5/6 sm:w-3/4 rounded-lg p-4 bg-base-300 shadow-lg'>
+      <h2 className='text-2xl '><a href="www.google.com">Title</a></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo iste assumenda id tempore velit voluptates rerum, facere enim praesentium perspiciatis!</p>
+      </div>
     </div>
   )
 }
